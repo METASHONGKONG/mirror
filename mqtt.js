@@ -114,12 +114,24 @@ app.get('/output', function (req, res) {
     
     var id = req.param('id');
     var mode = req.param('mode');
-    var pin = req.param('pin');
-    var intensity = req.param('intensity');
+    if(mode != 'motor'){
+        var pin = req.param('pin');
+        var intensity = req.param('intensity');
+        var json_created = '{"mode": "'+mode+'", "pin": "'+pin+'", "intensity": "'+intensity+'"}'
+        
+        console.log( "Output API called: "+id+" "+mode+" "+pin+" "+intensity);
+        
+    }else if (mode == 'motor'){
+        var no = req.param('no');
+        var direction = req.param('direction');
+        var intensity = req.param('intensity');
+        var json_created = '{"mode": "'+mode+'", "no": "'+no+'", "intensity": "'+intensity+'", "direction": "'+direction+'"}';
     
-    console.log( "Output API called: "+id+" "+mode+" "+pin+" "+intensity);
+        console.log( "Output API called: "+id+" "+mode+" "+no+" "+intensity + " "+direction);
+    }
     
-    var json_created = '{"mode": "'+mode+'", "pin": "'+pin+'", "intensity": "'+intensity+'"}'
+   
+    
     
     var message = {
       topic: 'output/'+id,
