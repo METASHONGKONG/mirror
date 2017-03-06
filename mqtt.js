@@ -91,7 +91,7 @@ app.get('/open', function (req, res) {
     server.publish(message, function() {
       console.log('done!');
     });
-    
+    res.setHeader('Access-Control-Allow-Origin', '*');
     res.end("DONE");
 })
 
@@ -106,7 +106,7 @@ app.get('/close', function (req, res) {
     server.publish(message, function() {
       console.log('done!');
     });
-    
+    res.setHeader('Access-Control-Allow-Origin', '*');
     res.end("DONE");
 })
 
@@ -131,7 +131,7 @@ app.get('/output', function (req, res) {
     server.publish(message, function() {
       console.log('done!');
     });
-    
+    res.setHeader('Access-Control-Allow-Origin', '*');
     res.end("DONE");
 })
 
