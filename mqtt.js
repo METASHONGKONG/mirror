@@ -143,6 +143,7 @@ app.get('/read', function (req, res) {
     
     fs.readFile( __dirname + "/" + user_id+"_input", 'utf8', function (err, data) {
        console.log( data );
+       res.setHeader('Access-Control-Allow-Origin', '*');
        res.end( data );
    });
 })
